@@ -1,7 +1,7 @@
 import math
 from numpy import *
 import random
-s
+
 class Population:
     def __init__(self,pop):
         """
