@@ -1,7 +1,7 @@
 #All necessary functions
+from numpy import *
 import random
 import math
-from numpy import *
 
 #Initialization function definition
 def initialize(pop,size):
@@ -38,7 +38,7 @@ def evaluate(initial_pop, dist_mat= 'Data/c.csv', serv_mat = 'Data/x.csv', poten
         count += 1
     return fitness
     
-#helper function
+#helper function for selection function
 def inside(range_dict, val):
     '''
     This is a helper function for the selection function
@@ -51,7 +51,7 @@ def inside(range_dict, val):
 
 
 #Selection Function definition
-def selection(chromosome,fitness,n=2):
+def RouletteWheelSelection(chromosome,fitness,n=2):
     '''
     chromosome - list containing chromosomes
     fitness - list containing fitness values of chromosomes in corresponding index
@@ -84,13 +84,14 @@ def UniformCrossover(mating_pool, Pc):
     
     offspring1 = parent1[:]
     offspring2 = parent2[:]
-    mask = [round(random.uniform(0,1)) for i in range(4)]
-    ind = 0
-    for j in range(4):
-        if mask[j] == 1 and random.uniform(0,1) < Pc:
-            offspring1[ind] = parent2[ind]
-            offspring2[ind] = parent1[ind]
-        ind += 1
+    if random.uniform(0,1) < Pc
+        mask = [round(random.uniform(0,1)) for i in range(4)]
+        ind = 0
+        for j in range(4):
+            if mask[j] == 1:
+                offspring1[ind] = parent2[ind]
+                offspring2[ind] = parent1[ind]
+            ind += 1
     return [parent1,parent2],[offspring1,offspring2]
         
         
@@ -100,11 +101,10 @@ def mutate(chromosome, Pm):
     chromosome - a single chromosome string
     Pm - probability of mutation
     """
-    for i in range(4):
-        rnd = random.uniform(0,1)
-        if rnd < Pm:
-            ran = get_good_gene(chromosome)
-            chromosome[i] = ran
+    if random.uniform(0,1) < Pm:
+        i = random.randrange(0,4)
+        ran = get_good_gene(chromosome)
+        chromosome[i] = ran
     return sorted(chromosome)
 
     #elitism    
@@ -114,6 +114,7 @@ def WeakParent_elitism(current_pop, parents, mutants):
     parents - (list) - consists of two parents selected for mating
     mutants - (list) - consists of offspring which may or maynot have been mutated
     '''
+    #NB: This assumes the parents are still part of the current population
     fitness = []
     tour = parents + mutants
     for chrom in tour:
@@ -130,7 +131,7 @@ def WeakParent_elitism(current_pop, parents, mutants):
         
     return current_pop   
 
-# Helper function
+# Helper function to find chromosome which occurs most
 def max_occurs(initial_pop):
     max_num = 0
     winner = 0
