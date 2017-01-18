@@ -93,7 +93,15 @@ def UniformCrossover(mating_pool, Pc):
                 offspring2[ind] = parent1[ind]
             ind += 1
     return [parent1,parent2],[offspring1,offspring2]
-        
+      
+#helper function for mutation function
+def get_good_gene(chrom):
+    new_gene = random.randint(1,20)
+    if chrom.count(new_gene) == 0:
+        return new_gene
+    else:
+        return get_good_gene(chrom)
+    
         
 #Mutation function definition
 def mutate(chromosome, Pm):
