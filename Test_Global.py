@@ -1,15 +1,7 @@
+from numpy import *
 import random
 import math
-from numpy import *
-
-def initialize(pop,size):
-    initial_pop = []
-    for i in range(size):
-        rnd = random.randint(0,len(pop))
-        initial_pop.append(pop[rnd])
-        
-    return initial_pop
-    
+   
                 
 def evaluate(initial_pop, dist_mat, serv_mat,potential):
     '''
@@ -30,49 +22,7 @@ def evaluate(initial_pop, dist_mat, serv_mat,potential):
                 total += math.exp(-1*c[i-1][j-1])*x[i-1][j-1]*d[i-1]   #differences in indexing(change)
         fitness.append(total)
         count += 1
-    return fitness
-    
-def inside(range_dict, val):
-    '''
-    This is a helper function for selection function
-    dic - range dictionary
-    val - (float)
-    '''
-    for item in range_dict.keys():
-        if val >= item[0] and val < item[1]:
-            return range_dict[item]
-
-#Selection Function definition
-def selection(chromosome,fitness,n):
-    '''
-    chromosome - list containing chromosomes
-    fitness - list containing fitness values of chromosomes in corresponding index
-    n - int : number of elements desired in mating pool
-    '''
-    sum_fitness = sum(fitness)
-    range_dict = {}
-    mating_pool = []
-    so_far = 0
-    count = 0
-    #for fit_1 in fitness:
-    while so_far < sum_fitness:
-        x,y = so_far,so_far+fitness[count]
-        range_dict[x,y] = chromosome[count]
-        so_far += fitness[count]
-        count += 1
-    print range_dict
-        
-    for i in range(n):
-        rnd = random.uniform(0,sum_fitness)  #or randrange (i dont know the difference)
-        print rnd
-        temp = inside(range_dict,rnd)
-        mating_pool.append(temp)
-    return mating_pool
-                  
-                                              
-                
-                
-                
+    return fitness              
                 
     
 pop = list()
