@@ -1,5 +1,34 @@
+from evaluate import *
 import random
-def UniformCrossover(mating_pool, Pc):
+
+#helper function for crossover and mutation functions
+def get_good_candidates(chrom,candidates= [1,8,9,11,13,16,19]):
+    """
+    A Helper function for mutation
+    chrom - (list) - a chromosome
+    candidates - (list) - list containing candidate nodes
+    """
+    for gene in chrom:
+        candidates.remove(gene)
+    return candidates
+
+def NewCrossover(mating_pool, Pc):
+    '''
+    mating_pool - list from the selection function
+    Pc - float (0<Pc<1) - Probability of crossover
+    '''
+    parents = random.sample(mating_pool,2)
+    offspring = []
+    for gene in parents[0]:
+        if gene in parents[1]:
+            offspring.append(gene)
+    left = len(parents[0])-len(offspring)
+    candidates = get_good_candidates(offspring)
+    offspring.append(random.sample(candidates,left))
+    return parents,sorted(offspring)
+        
+
+def Uniform(mating_pool, Pc):
     '''
     mating_pool - list from the selection function
     Pc - float (0<Pc<1) - Probability of crossover
@@ -15,10 +44,10 @@ def UniformCrossover(mating_pool, Pc):
             offspring1[ind] = parent2[ind]
             offspring2[ind] = parent1[ind]
         ind += 1
-    return (offspring1,offspring2)
+    return [parent1,parent2],[offspring1,offspring2]
     
     
-def OnePointCrossover(mate_pool,Pc):
+def OnePoint(mate_pool,Pc):
     [parent1,parent2] = random.sample(mate_pool,2)
     offspring1 = parent1
     offspring2 = parent2

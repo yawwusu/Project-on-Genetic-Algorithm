@@ -1,6 +1,6 @@
 from evaluate import *
 import random
-def WeakParent_elitism(current_pop, parents, mutants):
+def WeakParent(current_pop, parents, mutants):
     '''
     current_pop - (list) - list containing current population of fixed size
     parents - (list) - consists of two parents selected for mating
@@ -24,14 +24,12 @@ def WeakParent_elitism(current_pop, parents, mutants):
     
 ########################################################################    
     
-def random_elitism(current_pop, mutants):
+def Random(current_pop, mutant):
     '''
     current_pop - (list) - list containing current population of fixed size
-    mutants - (list) - consists of offspring which may or maynot have been mutated
+    mutant - (list) - consists of offspring which may or maynot have been mutated
     '''
-    # here selected parents 
-    scapegoats = random.sample(initial_pop,2)
-    for scapegoat in scapegoats:
-        current_pop.remove(scapegoat)
-    current_pop + mutants
+    removee = random.sample(current_pop,1)
+    current_pop.remove(removee)
+    current_pop.append(mutant)
     return current_pop
