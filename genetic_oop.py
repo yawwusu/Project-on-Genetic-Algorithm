@@ -34,5 +34,5 @@ def genetic_oop(dist_mat = 'c.csv', serv_mat = 'x3.csv', potential = 'd.csv', ma
         # form of elitism ##change
         index += 1
     
-    print len(Test1.initial_pop.Getpop())
+    print (len(Test1.initial_pop.Getpop()))
     return max_occurs(Test1.initial_pop.Getpop())

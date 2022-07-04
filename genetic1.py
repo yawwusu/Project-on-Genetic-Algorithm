@@ -24,7 +24,7 @@ def genetic(dist_mat = 'c.csv', serv_mat = 'x3.csv', potential = 'd.csv', max_it
         
         #Crossover
         (off_1,off_2) = crossover(mate_pool, Pc)   #
-        print index
+        print (index)
         #Mutate
         #problem here,  ##genes can repeat
         mut_off_1 = mutate(off_1,Pm)    #
@@ -36,5 +36,5 @@ def genetic(dist_mat = 'c.csv', serv_mat = 'x3.csv', potential = 'd.csv', max_it
         # form of elitism ##change
         index += 1
     
-    print 'There are ', len(initial_pop), 'chromosomes in the final generation. The best is:'
+    print ('There are ', len(initial_pop), 'chromosomes in the final generation. The best is:')
     return max_occurs(initial_pop)

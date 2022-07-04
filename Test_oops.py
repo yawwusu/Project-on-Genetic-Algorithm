@@ -33,5 +33,5 @@ while index < 5:       #stopping criteria 100 for now
     # form of elitism ##change
     index += 1
 
-print len(Test1.initial_pop.Getpop())
-print max_occurs(Test1.initial_pop.Getpop())
+print (len(Test1.initial_pop.Getpop()))
+print (max_occurs(Test1.initial_pop.Getpop()))

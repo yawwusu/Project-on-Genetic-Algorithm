@@ -28,4 +28,4 @@ from itertools import combinations
 initial_pop = list(combinations([1,8,9,11,13,16,19],4))  
 
 fitness = evaluate(initial_pop , 'c.csv' , 'x_m.csv' , 'd.csv')
-print fitness     
+print (fitness)     

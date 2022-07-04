@@ -88,8 +88,8 @@ class Genetic(Population):
         '''
         range_dict = {}
         ini_pop = self.initial_pop.Getpop()
-        print len(ini_pop)
-        print len(self.fitness)
+        print (len(ini_pop))
+        print (len(self.fitness))
         so_far = 0
         count = 0
         while count < len(self.fitness):

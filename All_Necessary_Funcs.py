@@ -46,7 +46,7 @@ def evaluate(initial_pop, dist_mat='Data/c.csv',serv_mat='Data/x.csv',potential=
     while count < no_chromosomes:
         total = 0
         for i in initial_pop[count]:
-            print total   #comment out
+            print (total)   #comment out
             for j in range(1,21):
                 total += math.exp(-1*c[i-1][j-1])*x[i-1][j-1]*d[j-1]*J_star[i-1][j-1]
         fitness.append(total)
@@ -199,10 +199,10 @@ def WeakParent(current_pop, parents, mutants):
     '''
     fitness = []
     tour = parents + mutants
-    print tour
+    print (tour)
     for chrom in tour:
         fitness.append(evaluate([chrom]))
-        print fitness
+        print (fitness)
     ind1 = fitness.index(max(fitness))
     max1 = tour.pop(ind1)
     ind2 = fitness.index(max(fitness))
@@ -220,7 +220,7 @@ def Random(current_pop, mutant):
     mutant - (list) - consists of offspring which may or maynot have been mutated
     '''
     removee = random.sample(current_pop,1)
-    #print removee,current_pop
+    #print (removee,current_pop)
     current_pop.remove(removee[0])
     current_pop.append(mutant)
     return current_pop

@@ -30,5 +30,5 @@ def genetic(Pop_Size = 50 , Pc = 0.8, Pm = 0.2, max_iter = 100, selection = Roul
         
         index += 1
     
-    print 'There are ', len(initial_pop), 'chromosomes in the final generation. The best is:'
+    print ('There are ', len(initial_pop), 'chromosomes in the final generation. The best is:')
     return max_occurs(initial_pop)

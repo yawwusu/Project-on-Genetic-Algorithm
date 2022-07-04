@@ -28,5 +28,5 @@ while index < 100:       #stopping criteria 100 for now
     
     index += 1
 
-print index,len(initial_pop)
-print max_occurs(initial_pop)
+print (index,len(initial_pop))
+print (max_occurs(initial_pop))

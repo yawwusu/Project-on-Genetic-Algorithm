@@ -30,7 +30,7 @@ def Roulette_wheel(chromosome,fitness,n):
         
     for i in range(n):
         rnd = random.uniform(0,sum_fitness)  #or randrange (i dont know the difference)
-        print rnd
+        print (rnd)
         temp = inside(range_dict,rnd)
         mating_pool.append(temp)
     return range_dict, mating_pool
